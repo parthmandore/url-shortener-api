@@ -1,125 +1,228 @@
-# URL Shortener API 🔗
+# 🔗 URL Shortener API
 
-A RESTful URL Shortener built using Java Spring Boot.
-
-This project allows users to generate short URLs, redirect to original URLs, and track click counts using a clean layered architecture.
+**Java • Spring Boot • REST API • JPA • H2 Database • Swagger UI**
 
 ---
 
-## 🚀 Features
+# 🚀 RESTful URL Shortener API
 
-- Generate short URLs using Base62 encoding
-- Redirect short URLs to original URLs
-- Track URL click counts
-- RESTful API design
-- Swagger UI for API testing
-- H2 in-memory database
-- Layered architecture (Controller-Service-Repository)
+A production-style URL Shortener built using **Spring Boot** that converts long URLs into compact, shareable links.
+
+The application generates unique short codes using **Base62 encoding**, stores mappings in an **H2 database**, and redirects users to the original destination while maintaining a clean layered architecture.
+
+It also includes an intuitive frontend interface and complete API documentation using **Swagger UI**.
 
 ---
 
-## 🛠️ Tech Stack
+## 🌟 Why This Project?
 
-- Java 17
-- Spring Boot
-- Spring Web
-- Spring Data JPA
-- H2 Database
-- Lombok
-- Swagger / OpenAPI
+Long URLs are difficult to share, remember, and manage.
+
+This project demonstrates how backend development concepts such as REST APIs, database persistence, layered architecture, and URL redirection can be combined to build a practical real-world application similar to Bit.ly or TinyURL.
 
 ---
 
-## 📂 Project Structure
+# ✨ Features
 
-src/main/java/com/parth/urlshortener
-
-├── controller  
-├── service  
-├── repository  
-├── entity  
-├── dto  
-└── util
+* 🔗 Convert long URLs into short links
+* 🚀 Instant URL redirection
+* 🎨 Responsive Frontend Interface
+* 📚 Interactive Swagger API Documentation
+* 💾 H2 In-Memory Database
+* 🏗️ Layered Spring Boot Architecture
+* 🔄 RESTful API Design
+* 🔑 Base62 Short Code Generation
+* ⚡ Lightweight and Fast
+* ✅ Input Validation & Error Handling
 
 ---
 
-## ⚡ API Endpoints
+# 🏗️ Project Workflow
 
-### Create Short URL
-
-POST `/api/urls`
-
-Request:
-
-```json
-{
-  "url": "https://google.com"
-}
 ```
-
-Response:
-
-```json
-{
-  "id": 1,
-  "originalUrl": "https://google.com",
-  "shortCode": "b",
-  "clickCount": 0
-}
+Long URL
+     │
+     ▼
+Frontend / Swagger Request
+     │
+     ▼
+Spring Boot REST API
+     │
+     ▼
+Generate Base62 Short Code
+     │
+     ▼
+Store URL Mapping (H2 Database)
+     │
+     ▼
+Return Short URL
+     │
+     ▼
+User Opens Short URL
+     │
+     ▼
+Redirect to Original Website
 ```
 
 ---
 
-### Redirect URL
+# 📋 API Endpoints
 
-GET `/r/{code}`
+| Method | Endpoint    | Description                  |
+| ------ | ----------- | ---------------------------- |
+| POST   | `/api/urls` | Generate a short URL         |
+| GET    | `/r/{code}` | Redirect to the original URL |
 
-Example:
+---
+
+# 🛠️ Technology Stack
+
+| Technology                 | Purpose               |
+| -------------------------- | --------------------- |
+| ☕ Java 17                  | Programming Language  |
+| 🌱 Spring Boot             | Backend Framework     |
+| 🗄️ Spring Data JPA        | Database Access       |
+| 💾 H2 Database             | Data Storage          |
+| 📖 Swagger UI              | API Documentation     |
+| 🎨 HTML • CSS • JavaScript | Frontend              |
+| 🔧 Maven                   | Dependency Management |
+
+---
+
+# 📷 Project Screenshots
+
+## 🏠 Home Page
+
+The landing page where users can enter a long URL to generate a shortened link.
+
+![Home Page](images/home.png)
+
+---
+
+## 🔗 Generated Short URL
+
+After submitting a valid URL, the application instantly generates a short, shareable link.
+
+![Generated URL](images/generated-url.png)
+
+---
+
+## 📚 Swagger API Documentation
+
+Interactive API documentation provided by Swagger UI for testing all available endpoints.
+
+![Swagger Overview](images/swagger-overview.png)
+
+---
+
+## 🚀 Create Short URL Request
+
+Example of sending a POST request through Swagger UI to create a new short URL.
+
+![Create API Request](images/create-api-request.png)
+
+---
+
+## ✅ API Response
+
+Successful API response returning the generated shortened URL.
+
+![Create API Response](images/create-api-response.png)
+
+# 📂 Project Structure
 
 ```text
-http://localhost:8081/r/b
+url-shortener-api/
+│
+├── src/
+├── images/
+│   ├── home.png
+│   ├── generated-url.png
+│   ├── swagger-overview.png
+│   ├── create-api-request.png
+│   └── create-api-response.png
+│
+├── pom.xml
+├── README.md
+└── mvnw
 ```
 
-Redirects to original URL.
+# ⚙️ Installation
 
----
+Clone the repository
 
-## 📘 Swagger Documentation
+```bash
+git clone https://github.com/parthmandore/url-shortener-api.git
+```
 
-Open:
+Navigate to the project
 
-```text
+```bash
+cd url-shortener-api
+```
+
+Run the application
+
+```bash
+./mvnw spring-boot:run
+```
+
+Open in your browser
+
+```
+Application
+http://localhost:8081
+
+Swagger UI
 http://localhost:8081/swagger-ui/index.html
 ```
 
 ---
 
-## ▶️ Run Locally
+# 🧪 Example Request
 
-Clone repository:
-
-```bash
-git clone <repo-url>
+```json
+{
+  "url": "https://www.google.com"
+}
 ```
 
-Run application:
+### Response
 
-```bash
-mvn spring-boot:run
+```json
+{
+  "shortUrl": "http://localhost:8081/r/c"
+}
 ```
 
 ---
 
-## 🌟 Future Improvements
+# 🔮 Future Improvements
 
-- URL expiry support
-- PostgreSQL integration
-- Docker support
-- Custom response DTOs
-- Analytics dashboard
+* 🌐 MySQL/PostgreSQL Support
+* 👤 User Authentication
+* 📊 URL Analytics Dashboard
+* 📈 Click Statistics
+* ⏳ URL Expiration
+* 🔐 Custom Short URLs
+* ☁️ Docker Deployment
+* 🚀 Cloud Deployment (AWS/GCP)
 
 ---
 
-## 👨‍💻 Author
+# ⚠️ Limitations
 
-Parth Mandore
+* Uses an H2 in-memory database (data resets when the application stops).
+* Base62 short codes are generated sequentially.
+* No authentication or user management.
+* Analytics and expiration features are not implemented yet.
+
+---
+
+# 👨‍💻 Author
+
+**Parth Mandore**
+
+Built with ❤️ using **Java, Spring Boot, REST APIs, and JPA**.
+
+If you found this project helpful, consider giving it a ⭐ on GitHub!
