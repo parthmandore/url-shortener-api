@@ -11,3 +11,4 @@ public class UrlRequest {
     @NotBlank
     private String url;
 }
+
